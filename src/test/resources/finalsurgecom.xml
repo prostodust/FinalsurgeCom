@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="FinalsurgeCom tests suite" parallel="tests" thread-count="2">
+    <test name="Authorization in the system">
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="smoke"/>-->
+<!--            </run>-->
+<!--        </groups>-->
+        <classes>
+            <class name="tests.LoginTest"/>
+            <parameter name="userFromXML" value="user"/>
+            <parameter name="passFromXML" value="pass"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Training volume">
+        <classes>
+            <class name="tests.TrainingVolumeTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Training calendar">
+        <classes>
+            <class name="tests.TrainingCalendarTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Training calculator">
+        <classes>
+            <class name="tests.TrainingCalculatorTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Statistics">
+        <classes>
+            <class name="tests.StatisticsTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite>
