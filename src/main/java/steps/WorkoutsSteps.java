@@ -2,10 +2,10 @@ package steps;
 
 import io.qameta.allure.Step;
 
-public class WorkoutsStep {
+public class WorkoutsSteps {
 
     @Step("Adding a workout")
-    public WorkoutsStep addingWorkout() {
+    public WorkoutsSteps addingWorkout() {
         return this;
     }
 }

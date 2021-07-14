@@ -17,20 +17,13 @@ import java.time.Duration;
 @Listeners(TestListener.class)
 abstract class BaseTest {
     WebDriver driver;
-
     /**
      * Actions performed before each test
      */
     @BeforeMethod
     public void initTest(ITestContext context) {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--ignore-certificate-errors");
-        options.addArguments("--disable-pop-blocking");
-        options.addArguments("--disable-popup-blocking");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-extensions");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(setChromeOptions());
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         initPages();
@@ -52,4 +45,18 @@ abstract class BaseTest {
      */
     public void initPages() {
     }
+
+    /**
+     * Set chrome options
+     */
+    public ChromeOptions setChromeOptions() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--ignore-certificate-errors");
+        options.addArguments("--disable-pop-blocking");
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-extensions");
+        return options;
+    }
+
 }
