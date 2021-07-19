@@ -13,7 +13,8 @@ public class LoginTest extends BaseTest implements ITestConstants {
     public void authorizationCorrectEmailAndPasswordTest() {
         loginPage.openPage(FINAL_SURGE_LOGINPAGE_URL)
                 .waitForPageOpened(10)
-                .login(System.getenv().getOrDefault("emailFromConfig", PropertyReader.getProperty("email")), System.getenv().getOrDefault("passFromConfig", PropertyReader.getProperty("password")))
+                .login(System.getenv().getOrDefault("emailFromCircleCI", PropertyReader.getProperty("emailFromConfig")),
+                        System.getenv().getOrDefault("passFromCircleCI", PropertyReader.getProperty("passFromConfig")))
                 .waitForPageOpened(10);
         Assert.assertEquals(calendarPage.getCalendarPageLogoText(), "Training Calendar");
     }
@@ -25,7 +26,7 @@ public class LoginTest extends BaseTest implements ITestConstants {
     public void authorizationIncorrectPasswordTest() {
         loginPage.openPage(FINAL_SURGE_LOGINPAGE_URL)
                 .waitForPageOpened(10)
-                .login(System.getenv().getOrDefault("emailFromConfig", PropertyReader.getProperty("email")), "Incorrect pass");
+                .login(System.getenv().getOrDefault("emailFromCircleCI", PropertyReader.getProperty("emailFromConfig")), "Incorrect pass");
         Assert.assertEquals(loginPage.getErrorMessageText(), "Invalid login credentials. Please try again.");
     }
 
@@ -36,7 +37,8 @@ public class LoginTest extends BaseTest implements ITestConstants {
     public void logOutSystemTest() {
         loginPage.openPage(FINAL_SURGE_LOGINPAGE_URL)
                 .waitForPageOpened(10)
-                .login(System.getenv().getOrDefault("emailFromConfig", PropertyReader.getProperty("email")), System.getenv().getOrDefault("passFromConfig", PropertyReader.getProperty("password")))
+                .login(System.getenv().getOrDefault("emailFromCircleCI", PropertyReader.getProperty("emailFromConfig")),
+                        System.getenv().getOrDefault("passFromCircleCI", PropertyReader.getProperty("passFromConfig")))
                 .waitForPageOpened(10)
                 .clickLogoutLink()
                 .waitForPageLoaded();
