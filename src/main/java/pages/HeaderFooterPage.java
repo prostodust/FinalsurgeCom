@@ -1,24 +1,27 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
+@Getter
 @Log4j2
 public class HeaderFooterPage extends HomePage {
     @FindBy(xpath = "//a[@href='default.cshtml']/img")
     WebElement headerFooterPageLogo;
 
+    @FindBy(xpath = "//*[@class='user-info']/strong")
+    WebElement usernameHeader;
+
     @FindBy(xpath = "//a[contains(text(), 'Logout')]")
     WebElement logoutLink;
 
     /**
+     * Сreating an object
+     *
      * @param driver the driver
      */
     public HeaderFooterPage(WebDriver driver) {
@@ -37,15 +40,12 @@ public class HeaderFooterPage extends HomePage {
     }
 
     /**
-     * Waiting for an element to load during a timeout
+     * Get username text from header
      *
-     * @param timeout the timeout
+     * @return username text
      */
-    public HeaderFooterPage waitForPageOpened(int timeout) {
-        log.debug("Waiting for an element to load in page during a <" + timeout + "> second");
-        wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.visibilityOf(headerFooterPageLogo));
-        return this;
+    public String getUsernameHeaderText() {
+        log.debug("Get username text from header");
+        return usernameHeader.getText();
     }
-
 }

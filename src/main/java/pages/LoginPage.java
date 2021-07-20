@@ -1,33 +1,32 @@
 package pages;
 
+import constants.IConstants;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 @Log4j2
-public class LoginPage extends BasePage {
+public class LoginPage extends BasePage implements IConstants {
+    @FindBy(xpath = "//*[@class='imgpad']")
+    WebElement loginPageLogo;
+
     @FindBy(xpath = "//*[@id='login_name']")
     WebElement emailInput;
 
     @FindBy(xpath = "//*[@id='login_password']")
     WebElement passwordInput;
 
-    @FindBy(xpath="//button[contains(text(), 'Login')]")
+    @FindBy(xpath = "//button[contains(text(), 'Login')]")
     WebElement loginButton;
 
-    @FindBy(xpath = "//*[@class='imgpad']")
-    WebElement loginPageLogo;
-
-    @FindBy(xpath = "//*[@class='alert alert-error']/strong")
+    @FindBy(xpath = "//*[contains(@class, 'alert-error')]/strong")
     WebElement errorMessage;
 
     /**
+     * Сreating an object
+     *
      * @param driver the driver
      */
     public LoginPage(WebDriver driver) {
@@ -35,14 +34,12 @@ public class LoginPage extends BasePage {
     }
 
     /**
-     * Open page
-     *
-     * @param url the url
+     * Open login page
      */
     @Step("Opening login page")
-    public LoginPage openPage(String url) {
-        log.info("Opening the login page at " + url);
-        driver.get(url);
+    public LoginPage openLoginPage() {
+        openPage(FINAL_SURGE_LOGINPAGE_URL);
+        waitForPageOpened(loginPageLogo, 10);
         return this;
     }
 
@@ -60,7 +57,7 @@ public class LoginPage extends BasePage {
         passwordInput.sendKeys(password);
         log.info("Pressing the button <Login>");
         loginButton.click();
-        log.info("Went to the Header page");
+        log.info("Went to the Home page");
         return new HeaderFooterPage(driver);
     }
 
@@ -72,17 +69,5 @@ public class LoginPage extends BasePage {
     public String getErrorMessageText() {
         log.info("Getting an error message");
         return errorMessage.getText();
-    }
-
-    /**
-     * Waiting for an element to load during a timeout
-     *
-     * @param timeout the timeout
-     */
-    public LoginPage waitForPageOpened(int timeout) {
-        log.debug("Waiting for an element to load in page during a <" + timeout + "> second");
-        wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.visibilityOf(loginPageLogo));
-        return this;
     }
 }

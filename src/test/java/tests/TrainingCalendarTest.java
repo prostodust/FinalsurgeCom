@@ -1,5 +1,6 @@
 package tests;
 
+import constants.ITestConstants;
 import org.testng.annotations.Test;
 
 public class TrainingCalendarTest extends BaseTest implements ITestConstants {
