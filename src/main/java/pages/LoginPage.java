@@ -50,7 +50,7 @@ public class LoginPage extends BasePage implements IConstants {
      * @param password the password
      */
     @Step("Fill in {email} and {password} in login page")
-    public HeaderFooterPage login(String email, String password) {
+    public HomePage login(String email, String password) {
         log.info("Fill in email <" + email + "> in login page");
         emailInput.sendKeys(email);
         log.info("Fill in password <" + password + "> in login page");
@@ -58,7 +58,7 @@ public class LoginPage extends BasePage implements IConstants {
         log.info("Pressing the button <Login>");
         loginButton.click();
         log.info("Went to the Home page");
-        return new HeaderFooterPage(driver);
+        return new HomePage(driver);
     }
 
     /**
