@@ -2,15 +2,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="FinalsurgeCom tests suite" parallel="tests" thread-count="2">
     <test name="Authorization in the system">
-<!--        <groups>-->
-<!--            <run>-->
-<!--                <include name="smoke"/>-->
-<!--            </run>-->
-<!--        </groups>-->
         <classes>
             <class name="tests.LoginTest"/>
-            <parameter name="userFromXML" value="user"/>
-            <parameter name="passFromXML" value="pass"/>
         </classes>
     </test> <!-- Test -->
     <test name="Training volume">

@@ -9,6 +9,10 @@ import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
+import pages.CalendarPage;
+import pages.HeaderFooterPage;
+import pages.LoginPage;
+import pages.LogoutPage;
 import utils.TestListener;
 
 import java.time.Duration;
@@ -17,6 +21,11 @@ import java.time.Duration;
 @Listeners(TestListener.class)
 abstract class BaseTest {
     WebDriver driver;
+    LoginPage loginPage;
+    LogoutPage logoutPage;
+    HeaderFooterPage headerFooterPage;
+    CalendarPage calendarPage;
+
     /**
      * Actions performed before each test
      */
@@ -44,6 +53,10 @@ abstract class BaseTest {
      * Initializing pages
      */
     public void initPages() {
+        loginPage = new LoginPage(driver);
+        logoutPage = new LogoutPage(driver);
+        headerFooterPage = new HeaderFooterPage(driver);
+        calendarPage = new CalendarPage(driver);
     }
 
     /**

@@ -74,6 +74,6 @@ workflows:
           filters:
             branches:
               only:
-                - creating_tests
+                - master
     jobs:
       - all-tests
