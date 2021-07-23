@@ -1,14 +1,14 @@
 package pages;
 
-import constants.IConstants;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.PropertyReader;
 
 @Log4j2
-public class LoginPage extends BasePage implements IConstants {
+public class LoginPage extends BasePage {
     @FindBy(xpath = "//*[@class='imgpad']")
     WebElement loginPageLogo;
 
@@ -58,6 +58,17 @@ public class LoginPage extends BasePage implements IConstants {
         log.info("Pressing the button <Login>");
         loginButton.click();
         log.info("Went to the Home page");
+        return new HomePage(driver);
+    }
+
+    /**
+     * Authorization with the correct data
+     */
+    @Step("Authorization with the correct data")
+    public HomePage authorizationCorrectData() {
+        openLoginPage();
+        login(System.getenv().getOrDefault("emailFromCircleCI", PropertyReader.getProperty("emailFromConfig")),
+                System.getenv().getOrDefault("passFromCircleCI", PropertyReader.getProperty("passFromConfig")));
         return new HomePage(driver);
     }
 

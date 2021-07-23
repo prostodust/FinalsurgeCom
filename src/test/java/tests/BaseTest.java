@@ -1,29 +1,29 @@
 package tests;
 
+import constants.ITestConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
-import pages.CalendarPage;
-import pages.HeaderFooterPage;
-import pages.LoginPage;
-import pages.LogoutPage;
+import pages.*;
 import utils.TestListener;
 
 import java.time.Duration;
 
 @Log4j2
 @Listeners(TestListener.class)
-abstract class BaseTest {
+abstract class BaseTest implements ITestConstants {
     WebDriver driver;
     LoginPage loginPage;
     LogoutPage logoutPage;
     HeaderFooterPage headerFooterPage;
+    DashboardPage dashboardPage;
     CalendarPage calendarPage;
 
     /**
@@ -32,7 +32,11 @@ abstract class BaseTest {
     @BeforeMethod
     public void initTest(ITestContext context) {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(setChromeOptions());
+        try {
+            driver = new ChromeDriver(setChromeOptions());
+        } catch (WebDriverException exception) {
+            log.fatal("Driver not started");
+        }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         initPages();
@@ -56,6 +60,7 @@ abstract class BaseTest {
         loginPage = new LoginPage(driver);
         logoutPage = new LogoutPage(driver);
         headerFooterPage = new HeaderFooterPage(driver);
+        dashboardPage = new DashboardPage(driver);
         calendarPage = new CalendarPage(driver);
     }
 

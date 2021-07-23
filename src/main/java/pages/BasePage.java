@@ -1,5 +1,6 @@
 package pages;
 
+import constants.IConstants;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 @Log4j2
-abstract class BasePage {
+abstract class BasePage implements IConstants {
     WebDriver driver;
     WebDriverWait wait;
 
