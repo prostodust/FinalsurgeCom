@@ -1,6 +1,5 @@
 package pages;
 
-import constants.IConstants;
 import io.qameta.allure.Step;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class DashboardPage extends HeaderFooterPage implements IConstants {
+public class DashboardPage extends HeaderFooterPage {
     @FindBy(xpath = "//*[@id='breadcrumbs']//*[text() = 'Dashboard']")
     WebElement dashboardPageLogo;
 

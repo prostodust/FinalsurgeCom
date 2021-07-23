@@ -1,9 +1,8 @@
 package tests;
 
-import constants.ITestConstants;
 import org.testng.annotations.Test;
 
-public class StatisticsTest extends BaseTest implements ITestConstants {
+public class StatisticsTest extends BaseTest {
 
     @Test(description = "Search for a workout")
     public void searchWorkoutTest() {

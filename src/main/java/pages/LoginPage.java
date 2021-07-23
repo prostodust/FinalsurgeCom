@@ -1,6 +1,5 @@
 package pages;
 
-import constants.IConstants;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import utils.PropertyReader;
 
 @Log4j2
-public class LoginPage extends BasePage implements IConstants {
+public class LoginPage extends BasePage {
     @FindBy(xpath = "//*[@class='imgpad']")
     WebElement loginPageLogo;
 

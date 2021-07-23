@@ -1,10 +1,9 @@
 package pages;
 
-import constants.IConstants;
 import elements.Checkbox;
 import elements.DropDown;
 import elements.Input;
-import elements.Textarea;
+import elements.TextArea;
 import io.qameta.allure.Step;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
@@ -15,7 +14,7 @@ import org.openqa.selenium.support.FindBy;
 
 @Getter
 @Log4j2
-public class CalendarPage extends HeaderFooterPage implements IConstants {
+public class CalendarPage extends HeaderFooterPage {
     public static final String WORKOUT_TIME = "//*[@data-title='%s']//div[@class='fc-event-workouttime']";
 
     @FindBy(xpath = "//*[@id='breadcrumbs']//*[text() = 'Training Calendar']")
@@ -70,10 +69,10 @@ public class CalendarPage extends HeaderFooterPage implements IConstants {
         timeOfDateInput.sendKeys(workoutTime);
         new DropDown(driver, "Activity Type").select(activityType);
         new Input(driver, "Workout Name").inputText(workoutName);
-        new Textarea(driver, "Workout Description").textareaText(workoutDescription);
+        new TextArea(driver, "Workout Description").typeText(workoutDescription);
         new Input(driver, "Distance").inputText(distance);
         if (saveToLibrary) {
-            new Checkbox(driver, "Save to Library").put();
+            new Checkbox(driver, "Save to Library").check();
         }
         log.info("Pressing the Save button");
         addWorkoutButton.click();
@@ -107,7 +106,6 @@ public class CalendarPage extends HeaderFooterPage implements IConstants {
      */
     @Step("Search for a workout and get time")
     public String getWorkoutAndTime(WebDriver driver, String label) {
-//        String label;
         log.info(String.format("Search for a workout '%s' and get time.", label));
         return driver.findElement(By.xpath(String.format(WORKOUT_TIME, label))).getText();
     }

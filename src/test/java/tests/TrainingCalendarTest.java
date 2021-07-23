@@ -1,11 +1,10 @@
 package tests;
 
-import constants.ITestConstants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import testdata.ITestData;
 
-public class TrainingCalendarTest extends BaseTest implements ITestConstants, ITestData {
+public class TrainingCalendarTest extends BaseTest implements ITestData {
 
     /**
      * Quick addition of a workout

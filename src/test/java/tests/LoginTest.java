@@ -1,11 +1,10 @@
 package tests;
 
-import constants.ITestConstants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.PropertyReader;
 
-public class LoginTest extends BaseTest implements ITestConstants {
+public class LoginTest extends BaseTest {
 
     /**
      * Entering the correct data

@@ -1,10 +1,9 @@
 package tests;
 
-import constants.ITestConstants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TrainingVolumeTest extends BaseTest implements ITestConstants {
+public class TrainingVolumeTest extends BaseTest {
 
     /**
      * Viewing the training volume

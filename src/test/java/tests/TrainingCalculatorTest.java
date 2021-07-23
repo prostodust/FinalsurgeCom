@@ -1,9 +1,8 @@
 package tests;
 
-import constants.ITestConstants;
 import org.testng.annotations.Test;
 
-public class TrainingCalculatorTest extends BaseTest implements ITestConstants {
+public class TrainingCalculatorTest extends BaseTest {
 
     @Test(description = "Intensity calculation")
     public void intensityCalculationTest() {

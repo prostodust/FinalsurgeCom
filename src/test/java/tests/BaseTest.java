@@ -1,5 +1,6 @@
 package tests;
 
+import constants.ITestConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +18,7 @@ import java.time.Duration;
 
 @Log4j2
 @Listeners(TestListener.class)
-abstract class BaseTest {
+abstract class BaseTest implements ITestConstants {
     WebDriver driver;
     LoginPage loginPage;
     LogoutPage logoutPage;
