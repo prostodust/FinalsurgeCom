@@ -13,6 +13,27 @@ public class HeaderFooterPage extends HomePage {
     @FindBy(xpath = "//a[@href='default.cshtml']/img")
     WebElement headerFooterPageLogo;
 
+    @FindBy(xpath = "//*[@class='icsw16-home']")
+    WebElement dashboardButton;
+
+    @FindBy(xpath = "//*[@class='icsw16-day-calendar']")
+    WebElement calendarButton;
+
+    @FindBy(xpath = "//*[@class='icsw16-stop-watch']")
+    WebElement workoutCalculatorsButton;
+
+    @FindBy(xpath = "//*[@class='icsw16-calculator']")
+    WebElement otherCalculatorsButton;
+
+    @FindBy(xpath = "//*[@class='icsw16-graph']")
+    WebElement statisticsButton;
+
+    @FindBy(xpath = "//*[@class='icsw16-mail']")
+    WebElement mailboxButton;
+
+    @FindBy(xpath = "//*[@class='icsw16-printer']")
+    WebElement printWorkoutsButton;
+
     @FindBy(xpath = "//*[@class='user-info']/strong")
     WebElement usernameHeader;
 
@@ -26,6 +47,16 @@ public class HeaderFooterPage extends HomePage {
      */
     public HeaderFooterPage(WebDriver driver) {
         super(driver);
+    }
+
+    /**
+     * Click on the button
+     */
+    @Step("Click on the button in the header")
+    public void clickButton(WebElement elementButton) {
+        log.info("Click on the button in the header");
+        elementButton.click();
+        log.info("Went to the next page");
     }
 
     /**

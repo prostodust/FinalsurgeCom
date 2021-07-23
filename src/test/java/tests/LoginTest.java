@@ -12,7 +12,8 @@ public class LoginTest extends BaseTest implements ITestConstants {
      */
     @Test(description = "Authorization with the correct e-mail and password")
     public void authorizationCorrectEmailAndPasswordTest() {
-        loginPage.openLoginPage()
+        loginPage
+                .openLoginPage()
                 .login(System.getenv().getOrDefault("emailFromCircleCI", PropertyReader.getProperty("emailFromConfig")),
                         System.getenv().getOrDefault("passFromCircleCI", PropertyReader.getProperty("passFromConfig")))
                 .waitForPageOpened(headerFooterPage.getHeaderFooterPageLogo(), 10);
@@ -24,7 +25,8 @@ public class LoginTest extends BaseTest implements ITestConstants {
      */
     @Test(description = "Authorization with an incorrect password")
     public void authorizationIncorrectPasswordTest() {
-        loginPage.openLoginPage()
+        loginPage
+                .openLoginPage()
                 .login(System.getenv().getOrDefault("emailFromCircleCI", PropertyReader.getProperty("emailFromConfig")), "Incorrect pass");
         Assert.assertEquals(loginPage.getErrorMessageText(), "Invalid login credentials. Please try again.");
     }
@@ -34,12 +36,15 @@ public class LoginTest extends BaseTest implements ITestConstants {
      */
     @Test(description = "Log out of the system")
     public void logOutSystemTest() {
-        loginPage.openLoginPage()
+        loginPage
+                .openLoginPage()
                 .login(System.getenv().getOrDefault("emailFromCircleCI", PropertyReader.getProperty("emailFromConfig")),
                         System.getenv().getOrDefault("passFromCircleCI", PropertyReader.getProperty("passFromConfig")))
                 .waitForPageOpened(headerFooterPage.getHeaderFooterPageLogo(), 10);
-        headerFooterPage.clickLogoutLink()
+        headerFooterPage
+                .clickLogoutLink()
                 .waitForPageOpened(logoutPage.getLogoutPageLogo(), 10);
         Assert.assertEquals(logoutPage.getLogoutMessageText(), "You have been successfully logged out of the system.");
     }
+
 }
