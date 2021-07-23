@@ -3,6 +3,7 @@ package tests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestContext;
@@ -30,7 +31,11 @@ abstract class BaseTest {
     @BeforeMethod
     public void initTest(ITestContext context) {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(setChromeOptions());
+        try {
+            driver = new ChromeDriver(setChromeOptions());
+        } catch (WebDriverException exception) {
+            log.fatal("Driver not started");
+        }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         initPages();
