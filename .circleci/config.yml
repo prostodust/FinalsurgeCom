@@ -36,7 +36,6 @@ jobs:
   all-tests:
     docker:
       - image: circleci/openjdk:8u265-jdk-browsers
-    parallelism: 4
     steps:
       - checkout
       - restore_cache:
