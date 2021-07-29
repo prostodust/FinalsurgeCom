@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class DashboardPage extends HeaderFooterPage {
+public class DashboardPage extends HomePage {
     @FindBy(xpath = "//*[@id='breadcrumbs']//*[text() = 'Dashboard']")
     WebElement dashboardPageLogo;
 

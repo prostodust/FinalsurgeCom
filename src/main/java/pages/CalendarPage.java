@@ -14,7 +14,7 @@ import org.openqa.selenium.support.FindBy;
 
 @Getter
 @Log4j2
-public class CalendarPage extends HeaderFooterPage {
+public class CalendarPage extends HomePage {
     public static final String WORKOUT_TIME = "//*[@data-title='%s']//div[@class='fc-event-workouttime']";
 
     @FindBy(xpath = "//*[@id='breadcrumbs']//*[text() = 'Training Calendar']")

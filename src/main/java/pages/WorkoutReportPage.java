@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class WorkoutReportPage extends HeaderFooterPage {
+public class WorkoutReportPage extends HomePage {
 
     /**
      * Сreating an object

@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class MailboxPage extends HeaderFooterPage {
+public class MailboxPage extends HomePage {
 
     /**
      * Сreating an object

@@ -14,7 +14,7 @@ public class TrainingCalendarTest extends BaseTest implements ITestData {
                                          String workoutDescription, String distance, boolean saveToLibrary) {
         loginPage
                 .authorizationCorrectData()
-                .waitForPageOpened(headerFooterPage.getHeaderFooterPageLogo(), 10);
+                .waitForPageOpened(homePage.getHeaderFooterPageLogo(), 10);
         calendarPage
                 .openCalendarPage()
                 .clickQuickAddButton()

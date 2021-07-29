@@ -15,8 +15,8 @@ public class LoginTest extends BaseTest {
                 .openLoginPage()
                 .login(System.getenv().getOrDefault("emailFromCircleCI", PropertyReader.getProperty("emailFromConfig")),
                         System.getenv().getOrDefault("passFromCircleCI", PropertyReader.getProperty("passFromConfig")))
-                .waitForPageOpened(headerFooterPage.getHeaderFooterPageLogo(), 10);
-        Assert.assertEquals(headerFooterPage.getUsernameHeaderText(), FINAL_SURGE_USER);
+                .waitForPageOpened(homePage.getHeaderFooterPageLogo(), 10);
+        Assert.assertEquals(homePage.getUsernameHeaderText(), FINAL_SURGE_USER);
     }
 
     /**
@@ -39,8 +39,8 @@ public class LoginTest extends BaseTest {
                 .openLoginPage()
                 .login(System.getenv().getOrDefault("emailFromCircleCI", PropertyReader.getProperty("emailFromConfig")),
                         System.getenv().getOrDefault("passFromCircleCI", PropertyReader.getProperty("passFromConfig")))
-                .waitForPageOpened(headerFooterPage.getHeaderFooterPageLogo(), 10);
-        headerFooterPage
+                .waitForPageOpened(homePage.getHeaderFooterPageLogo(), 10);
+        homePage
                 .clickLogoutLink()
                 .waitForPageOpened(logoutPage.getLogoutPageLogo(), 10);
         Assert.assertEquals(logoutPage.getLogoutMessageText(), "You have been successfully logged out of the system.");

@@ -22,7 +22,7 @@ abstract class BaseTest implements ITestConstants {
     WebDriver driver;
     LoginPage loginPage;
     LogoutPage logoutPage;
-    HeaderFooterPage headerFooterPage;
+    HomePage homePage;
     DashboardPage dashboardPage;
     CalendarPage calendarPage;
 
@@ -59,7 +59,7 @@ abstract class BaseTest implements ITestConstants {
     public void initPages() {
         loginPage = new LoginPage(driver);
         logoutPage = new LogoutPage(driver);
-        headerFooterPage = new HeaderFooterPage(driver);
+        homePage = new HomePage(driver);
         dashboardPage = new DashboardPage(driver);
         calendarPage = new CalendarPage(driver);
     }
